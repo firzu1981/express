@@ -10,7 +10,6 @@ router.all('*', (req, res, next) => {
 	next();
 });
 
-/* GET home page. */
 router.get('/', (req, res) => {
 	News.find({}, (err, data) => {
 		res.render('admin/index', { title: 'Admin', data });
@@ -36,10 +35,9 @@ router.post('/news/add', (req, res) => {
 });
 
 router.get('/news/delete/:id', (req, res) => {
-	News.findByIdAndDelete(req.params.id,(err)=>{
+	News.findByIdAndDelete(req.params.id, (err) => {
 		res.redirect('/admin');
 	});
 });
-
 
 module.exports = router;
